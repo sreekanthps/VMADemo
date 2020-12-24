@@ -10,6 +10,8 @@
 		87D58351D7041BBD2F272FBF /* Pods_VMADemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF16D5E7D12956E95A6A3E1A /* Pods_VMADemo.framework */; };
 		D1244E412588A250006FAFC0 /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1244E402588A250006FAFC0 /* CryptoHelper.swift */; };
 		D16D3DD92593D187003A1702 /* CryptoExportImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D3DD82593D187003A1702 /* CryptoExportImportManager.swift */; };
+		D16D3E0625947B67003A1702 /* vmaprivate.pem in Resources */ = {isa = PBXBuildFile; fileRef = D16D3E0425947B67003A1702 /* vmaprivate.pem */; };
+		D16D3E0725947B67003A1702 /* vmapublic.pem in Resources */ = {isa = PBXBuildFile; fileRef = D16D3E0525947B67003A1702 /* vmapublic.pem */; };
 		D1F3A0322592440B000904C8 /* SecureRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F3A0312592440A000904C8 /* SecureRandom.swift */; };
 		D1F3A03B25938E3B000904C8 /* PublicPrivateKeypair.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F3A03A25938E3B000904C8 /* PublicPrivateKeypair.swift */; };
 		D1F3A0462593A7C4000904C8 /* JOSESwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F3A0442593A7BB000904C8 /* JOSESwift.framework */; };
@@ -41,6 +43,8 @@
 		BF16D5E7D12956E95A6A3E1A /* Pods_VMADemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VMADemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1244E402588A250006FAFC0 /* CryptoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
 		D16D3DD82593D187003A1702 /* CryptoExportImportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoExportImportManager.swift; sourceTree = "<group>"; };
+		D16D3E0425947B67003A1702 /* vmaprivate.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vmaprivate.pem; sourceTree = "<group>"; };
+		D16D3E0525947B67003A1702 /* vmapublic.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vmapublic.pem; sourceTree = "<group>"; };
 		D1F3A0312592440A000904C8 /* SecureRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureRandom.swift; sourceTree = "<group>"; };
 		D1F3A03A25938E3B000904C8 /* PublicPrivateKeypair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicPrivateKeypair.swift; sourceTree = "<group>"; };
 		D1F3A0442593A7BB000904C8 /* JOSESwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JOSESwift.framework; sourceTree = "<group>"; };
@@ -83,6 +87,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D16D3E0325947B42003A1702 /* certs */ = {
+			isa = PBXGroup;
+			children = (
+				D16D3E0425947B67003A1702 /* vmaprivate.pem */,
+				D16D3E0525947B67003A1702 /* vmapublic.pem */,
+			);
+			path = certs;
+			sourceTree = "<group>";
+		};
 		D1FDC9AB25877F78005074B7 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +117,7 @@
 		D1FDC9B625877F78005074B7 /* VMADemo */ = {
 			isa = PBXGroup;
 			children = (
+				D16D3E0325947B42003A1702 /* certs */,
 				D16D3DD82593D187003A1702 /* CryptoExportImportManager.swift */,
 				D1F3A0442593A7BB000904C8 /* JOSESwift.framework */,
 				D1244E402588A250006FAFC0 /* CryptoHelper.swift */,
@@ -180,7 +194,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D16D3E0725947B67003A1702 /* vmapublic.pem in Resources */,
 				D1FDC9C425877F7C005074B7 /* LaunchScreen.storyboard in Resources */,
+				D16D3E0625947B67003A1702 /* vmaprivate.pem in Resources */,
 				D1FDC9C125877F7C005074B7 /* Assets.xcassets in Resources */,
 				D1FDC9BF25877F78005074B7 /* Main.storyboard in Resources */,
 			);
