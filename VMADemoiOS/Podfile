@@ -7,6 +7,7 @@ target 'VMADemo' do
 
   # Pods for VMADemo
   pod 'CryptoSwift', '~> 1.0'
+  pod 'SwiftyCrypto', '~> 0.0.1'
   
 
 end
