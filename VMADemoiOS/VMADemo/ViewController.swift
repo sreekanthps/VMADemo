@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        keys.generateRSAPublicKey()
+        //keys.generateRSAPublicKey()
         key = generateRandomBytes(length: 32)
         iv = generateRandomBytes(length: 16)
         keyData =  try! randomData(ofLength: 32)
@@ -30,18 +30,19 @@ class ViewController: UIViewController {
         let message = "Summer ⛱, Sun ☀️, Cactus 🌵".data(using: .utf8)!
         let header = JWEHeader(keyManagementAlgorithm: .RSAOAEP256, contentEncryptionAlgorithm: .AES256GCM)
         let payload = Payload(message)
-        let publickey = keys.getPublicKey()
-        let privateKey = keys.getPrivateKey()
+        let publickey =  RSAKeyGenerator.shared.getPublicKey()//keys.getPublicKey()
+        let privateKey = RSAKeyGenerator.shared.getPrivateKey()//keys.getPrivateKey()
         print("privateKey ::::: \(privateKey)")
         print("publickey :::: \(publickey)")
        let encrypter = Encrypter(keyManagementAlgorithm: .RSAOAEP256, contentEncryptionAlgorithm: .AES256GCM, encryptionKey: publickey!)!
         print("encrypter :::: \(encrypter)")
         if let jwe = try? JWE(header: header, payload: payload, encrypter: encrypter) {
             jwtString = jwe.compactSerializedString
-            print("jwtString :::::: \(jwtString)")
+            print("jwtString :::::: \(jwtString!)")
         }
+        let jwtJavaString = "eyJhbGciOiJSU0EtT0FFUC0yNTYiLCJlbmMiOiJBMjU2R0NNIn0.uxYTNSUM32ZpJFQ4zV47BAfdBjKjNvSOhLoZXm7mqFELsFptZ4ucUfdMGc194VzDL1zz0k4d9C8EGK_493bCp54-fuXQP0bgmbV_8jPGYhR1uH1z1kf4qdW_WhAouPAUjzucZiIT5mkv0eJbDR1cUoUwI_lkKoEqZ_v-MR2OlOQ4GQuiOqHJS2e2GzI2OvU27-FP8z6_XGpMJaDFKAytfl3AtjwUxjZb-MzsauMne1I6904rcrCzGGsvsDK2Q1gVHYLtEsniQbyg-8Z5WyddEjJnASRRXHC9Zn-ryNnOD5LZqYTiRkfJcPT8l1xBH1eXW_l47NHarxzsS-dVTS5rJw.hxLKhuDuU_ZE3NDX.Kr8EE1jUWew2mW9c.wxmf3TDeng1zGlNx4mZwHQ"
         do {
-            let jwe = try JWE(compactSerialization: jwtString!)
+            let jwe = try JWE(compactSerialization: jwtJavaString)
             print("jwe :::: \(jwe)")
             let decrypter = Decrypter(keyManagementAlgorithm: .RSAOAEP256, contentEncryptionAlgorithm: .AES256GCM, decryptionKey: privateKey!)!
             print("decrypter :::: \(decrypter)")

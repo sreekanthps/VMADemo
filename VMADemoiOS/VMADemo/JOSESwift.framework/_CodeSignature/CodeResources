@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/JOSESwift.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		v+Gq6QclaRy2VCONS3xalB49sPg=
+		VvwMDN5PP8RIbllSfNiEbC0Pk78=
 		</data>
 		<key>Modules/JOSESwift.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/JOSESwift.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		v+Gq6QclaRy2VCONS3xalB49sPg=
+		VvwMDN5PP8RIbllSfNiEbC0Pk78=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -76,11 +76,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			v+Gq6QclaRy2VCONS3xalB49sPg=
+			VvwMDN5PP8RIbllSfNiEbC0Pk78=
 			</data>
 			<key>hash2</key>
 			<data>
-			w2eTGfPngne1McvvMgkzdePbEAXgkbguPGKezI4iS9o=
+			tH2P9KURQbfPwTJM8XvqkTQuR79gftoecLF3Bwzh/N4=
 			</data>
 		</dict>
 		<key>Modules/JOSESwift.swiftmodule/x86_64.swiftdoc</key>
@@ -98,11 +98,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			v+Gq6QclaRy2VCONS3xalB49sPg=
+			VvwMDN5PP8RIbllSfNiEbC0Pk78=
 			</data>
 			<key>hash2</key>
 			<data>
-			w2eTGfPngne1McvvMgkzdePbEAXgkbguPGKezI4iS9o=
+			tH2P9KURQbfPwTJM8XvqkTQuR79gftoecLF3Bwzh/N4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
