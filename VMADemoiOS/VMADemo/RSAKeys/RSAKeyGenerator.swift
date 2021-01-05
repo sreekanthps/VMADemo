@@ -12,8 +12,6 @@ import Security
 
 class RSAKeyGenerator {
     
-    var publicKeyString: String?
-    var privateKeyString: String?
     var privateKey: RSAKey!
     var publicKey: RSAKey!
     public static let shared = RSAKeyGenerator()
@@ -28,8 +26,8 @@ class RSAKeyGenerator {
             print("RSAKeyGenerator bundle identifier failed")
             return
         }
-        publicKeyString = try? String(contentsOf: URL(fileURLWithPath: publicKeypath), encoding: .utf8)
-        privateKeyString = try? String(contentsOf: URL(fileURLWithPath: privateKeypath), encoding: .utf8)
+        let publicKeyString = try? String(contentsOf: URL(fileURLWithPath: publicKeypath), encoding: .utf8)
+        let privateKeyString = try? String(contentsOf: URL(fileURLWithPath: privateKeypath), encoding: .utf8)
         privateKey = try! RSAKey.init(base64String: privateKeyString!, keyType: .PRIVATE)
         publicKey = try! RSAKey.init(base64String: publicKeyString!, keyType: .PUBLIC)
     }

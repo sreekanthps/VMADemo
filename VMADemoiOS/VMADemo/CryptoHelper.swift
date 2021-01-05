@@ -25,7 +25,7 @@ class CryptoHelper {
         
             var encryptData: Data? = nil
             if let key = keyString, let data =  plainData {
-                //encryptData = try! CC.cryptAuth(.encrypt, blockMode: .gcm, algorithm: .aes, data: data, aData: addData, key: key, iv: ivDat, tagLength: 16)
+                encryptData = try! CC.cryptAuth(.encrypt, blockMode: .gcm, algorithm: .aes, data: data, aData: addData, key: key, iv: ivDat, tagLength: 16)
             }
             return encryptData
         }
@@ -34,7 +34,7 @@ class CryptoHelper {
             var decryptString: Data? = nil
             if let key = keyString, let encryptedData = data {
                 //
-                //decryptString = try! CC.cryptAuth(.decrypt, blockMode: .gcm, algorithm: .aes, data: encryptedData, aData: addData, key: key, iv: ivDat, tagLength: 16)
+                decryptString = try! CC.cryptAuth(.decrypt, blockMode: .gcm, algorithm: .aes, data: encryptedData, aData: addData, key: key, iv: ivDat, tagLength: 16)
             }
             return decryptString
     }

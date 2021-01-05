@@ -14,84 +14,64 @@ class ViewController: UIViewController {
     var key: String? =  "somerandometextusedaskeyforencrpytiontotest" //"1xTqTvDzmtQhfVLwlaARVEEFO+J4Idifg19qa7GGfh0="
     var iv: String? = "ivpairstobegeneratedtotest"
     let plaintext = "Testing my encryption mechanism".bytes
+    let plainData = "Testing my encryption mechanism".data(using: String.Encoding.utf8)!
     var encrypted :[UInt8] = []
     var keyData: Data? = nil
     var ivData: Data? = nil
     let keys = PublicPrivateKeypair()
     var jwtString: String?
+    var tag: Array<UInt8>?
+    let addData = try! Utilities.randomData(ofLength: 32)
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //keys.generateRSAPublicKey()
-        key = generateRandomBytes(length: 32)
-        iv = generateRandomBytes(length: 16)
-        keyData =  try! randomData(ofLength: 32)
-        ivData = try! randomData(ofLength: 16)
+        key = Utilities.generateRandomBytes(length: 32)
+        iv = Utilities.generateRandomBytes(length: 16)
+        keyData =  try! Utilities.randomData(ofLength: 32)
+        ivData = try! Utilities.randomData(ofLength: 16)
+        //encryptKey()
+        //decryptKey()
+        let encrypted = encryptData(plainData: plainData)
+        let decrypt = decryptString(data: encrypted)
         let message = "Summer ⛱, Sun ☀️, Cactus 🌵".data(using: .utf8)!
         let header = JWEHeader(keyManagementAlgorithm: .RSAOAEP256, contentEncryptionAlgorithm: .AES256GCM)
         let payload = Payload(message)
         let publickey =  RSAKeyGenerator.shared.getPublicKey()//keys.getPublicKey()
         let privateKey = RSAKeyGenerator.shared.getPrivateKey()//keys.getPrivateKey()
-        print("privateKey ::::: \(privateKey)")
-        print("publickey :::: \(publickey)")
-       let encrypter = Encrypter(keyManagementAlgorithm: .RSAOAEP256, contentEncryptionAlgorithm: .AES256GCM, encryptionKey: publickey!)!
-        print("encrypter :::: \(encrypter)")
-        if let jwe = try? JWE(header: header, payload: payload, encrypter: encrypter) {
-            jwtString = jwe.compactSerializedString
-            print("jwtString :::::: \(jwtString!)")
-        }
-        let jwtJavaString = "eyJhbGciOiJSU0EtT0FFUC0yNTYiLCJlbmMiOiJBMjU2R0NNIn0.uxYTNSUM32ZpJFQ4zV47BAfdBjKjNvSOhLoZXm7mqFELsFptZ4ucUfdMGc194VzDL1zz0k4d9C8EGK_493bCp54-fuXQP0bgmbV_8jPGYhR1uH1z1kf4qdW_WhAouPAUjzucZiIT5mkv0eJbDR1cUoUwI_lkKoEqZ_v-MR2OlOQ4GQuiOqHJS2e2GzI2OvU27-FP8z6_XGpMJaDFKAytfl3AtjwUxjZb-MzsauMne1I6904rcrCzGGsvsDK2Q1gVHYLtEsniQbyg-8Z5WyddEjJnASRRXHC9Zn-ryNnOD5LZqYTiRkfJcPT8l1xBH1eXW_l47NHarxzsS-dVTS5rJw.hxLKhuDuU_ZE3NDX.Kr8EE1jUWew2mW9c.wxmf3TDeng1zGlNx4mZwHQ"
-        do {
-            let jwe = try JWE(compactSerialization: jwtJavaString)
-            print("jwe :::: \(jwe)")
-            let decrypter = Decrypter(keyManagementAlgorithm: .RSAOAEP256, contentEncryptionAlgorithm: .AES256GCM, decryptionKey: privateKey!)!
-            print("decrypter :::: \(decrypter)")
-            let payload = try jwe.decrypt(using: decrypter)
-            let message = String(data: payload.data(), encoding: .utf8)!
-
-            print(message) // Summer ⛱, Sun ☀️, Cactus 🌵
-        }catch {
-            print("Decryption error ::::: \(error.localizedDescription)")
-        }
+        //print("privateKey ::::: \(privateKey)")
+        //print("publickey :::: \(publickey)")
+//       let encrypter = Encrypter(keyManagementAlgorithm: .RSAOAEP256, contentEncryptionAlgorithm: .AES256GCM, encryptionKey: publickey!)!
+//        print("encrypter :::: \(encrypter)")
+//        if let jwe = try? JWE(header: header, payload: payload, encrypter: encrypter) {
+//            jwtString = jwe.compactSerializedString
+//            print("jwtString :::::: \(jwtString!)")
+//        }
+//        let jwtJavaString = "eyJhbGciOiJSU0EtT0FFUC0yNTYiLCJlbmMiOiJBMjU2R0NNIn0.zCXaIZRdZhwiCB7TsTvAQPGY2QXZ9AkeB4dyAOT70KqrgpiSra92D56EQRD9yWJ4Q2_GqBOAKjkEewMouJiOjEGnMoN1f3lICTlqNhmxuQNDU4U5LXlmBDLa5OudhiBhZ4vxgnaDtZ83r9sRAMGCOvzY5o2Q5JIuJ-1Cs_IqhoVpxx9VLiig1NGP4eJW764B8DeXfDQpfl52X60cA2lkV9HMPfnTfWZaKKfes0dSPqcqlJdJmiEXGP38DYw7fnkRWS_A5G-R0rwzadjJGuedbAX_cG-9OwhUZUDJ0ClMZTlguD_iClFBxdxUhpDb9mpyAnaLP1djlso0w6IC5XdYIQ.US1juylWtg0tHEY3.Tbavvfg-TUBDaZfg.pjUhQ0JgzQLG-DGtgUB6wA"
+//        do {
+//            let jwe = try JWE(compactSerialization: jwtJavaString)
+//            print("jwe :::: \(jwe)")
+//            let decrypter = Decrypter(keyManagementAlgorithm: .RSAOAEP256, contentEncryptionAlgorithm: .AES256GCM, decryptionKey: privateKey!)!
+//            print("decrypter :::: \(decrypter)")
+//            let payload = try jwe.decrypt(using: decrypter)
+//            let message = String(data: payload.data(), encoding: .utf8)!
+//
+//            print(message) // Summer ⛱, Sun ☀️, Cactus 🌵
+//        }catch {
+//            print("Decryption error ::::: \(error.localizedDescription)")
+//        }
     }
     
-    func generateRandomBytes(length: Int = 16) -> String? {
-        var keyData = Data(count: length)
-        let result = keyData.withUnsafeMutableBytes {
-            SecRandomCopyBytes(kSecRandomDefault, length, $0)
-        }
-        if result == errSecSuccess {
-            return keyData.base64EncodedString()
-        } else {
-            print("Problem generating random bytes")
-            return nil
-        }
-    }
     
-    public func randomData(ofLength length: Int) throws -> Data? {
-        var bytes = [UInt8](repeating: 0, count: length)
-        let status = SecRandomCopyBytes(kSecRandomDefault, length, &bytes)
-        if status == errSecSuccess {
-            return Data(bytes)
-        }
-        // throw an error
-        return nil
-    }
     
     func encryptKey() {
         if let iv = ivData?.hexEncodedString(), let key = keyData?.hexEncodedString() {
             // In combined mode, the authentication tag is directly appended to the encrypted message. This is usually what you want.
-            print("iv hex ::::: \([UInt8](hex: iv))")
-            print("iv key ::::: \([UInt8](hex: key))")
-            let gcm = GCM(iv: [UInt8](hex: iv), mode: .combined)
+            let gcm = GCM(iv: [UInt8](hex: iv), mode: .detached)
             let aes = try! AES(key: [UInt8](hex: key), blockMode: gcm, padding: .noPadding)
             encrypted = try! aes.encrypt(plaintext)
-            print("encrypted ::::::: \(encrypted)")
-            print("encrypted string::::::: \(encrypted.toHexString())")
-            let tag = gcm.authenticationTag
-            print("tag :::::: \(tag!)")
-            print("tag data:::::: \(Data(tag!))")
-            print("tag hexEncodedString:::::: \(tag!.toHexString())")
+            tag = gcm.authenticationTag!
+            
         
         }
           
@@ -102,7 +82,7 @@ class ViewController: UIViewController {
         do {
             // In combined mode, the authentication tag is appended to the encrypted message. This is usually what you want.
             if let iv = ivData?.hexEncodedString(), let key = keyData?.hexEncodedString() {
-                let gcm = GCM(iv:  [UInt8](hex: iv), mode: .combined)
+                let gcm = GCM(iv:  [UInt8](hex: iv),authenticationTag: tag!, mode: .detached)
                 let aes = try AES(key: [UInt8](hex: key), blockMode: gcm, padding: .noPadding)
                 let plaintext =  try aes.decrypt(encrypted)
                 print("plaintext ::::::: \(plaintext)")
@@ -116,8 +96,25 @@ class ViewController: UIViewController {
         }
     }
     
-    func createJwt() {
-        //let jwtHeader = JWEHeader(keyManagementAlgorithm: KeyManagementAlgorithm, contentEncryptionAlgorithm: ContentEncryptionAlgorithm)
+   
+    
+    func encryptData(plainData: Data?) -> Data? {
+            var encryptData: Data? = nil
+            if let key = keyData, let data =  plainData, let iv = ivData, let adDData = addData  {
+                encryptData = try! CC.cryptAuth(.encrypt, blockMode: .gcm, algorithm: .aes, data: data, aData: adDData, key: key, iv: iv, tagLength: 16)
+            }
+            print("encryptData :::: \(String(decoding: encryptData!, as: UTF8.self))")
+            return encryptData
+        }
+    
+    func decryptString(data: Data?) -> Data? {
+            var decryptString: Data? = nil
+            if let key = keyData, let encryptedData = data,let iv = ivData, let adDData = addData {
+                //
+                decryptString = try! CC.cryptAuth(.decrypt, blockMode: .gcm, algorithm: .aes, data: encryptedData, aData: adDData, key: key, iv: iv, tagLength: 16)
+            }
+            print("decryptString :::: \(String(decoding: decryptString!, as: UTF8.self))")
+            return decryptString
     }
 
 }

@@ -13,6 +13,8 @@
 		D16D3E0625947B67003A1702 /* vmaprivate.pem in Resources */ = {isa = PBXBuildFile; fileRef = D16D3E0425947B67003A1702 /* vmaprivate.pem */; };
 		D16D3E0725947B67003A1702 /* vmapublic.pem in Resources */ = {isa = PBXBuildFile; fileRef = D16D3E0525947B67003A1702 /* vmapublic.pem */; };
 		D16D3E0A25947C2E003A1702 /* RSAKeyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D3E0925947C2E003A1702 /* RSAKeyGenerator.swift */; };
+		D1F241A625A45A9E00A10B7B /* SwCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F241A525A45A9E00A10B7B /* SwCrypt.swift */; };
+		D1F241A825A461FB00A10B7B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F241A725A461FB00A10B7B /* Utilities.swift */; };
 		D1F3A0322592440B000904C8 /* SecureRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F3A0312592440A000904C8 /* SecureRandom.swift */; };
 		D1F3A03B25938E3B000904C8 /* PublicPrivateKeypair.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F3A03A25938E3B000904C8 /* PublicPrivateKeypair.swift */; };
 		D1F3A0462593A7C4000904C8 /* JOSESwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F3A0442593A7BB000904C8 /* JOSESwift.framework */; };
@@ -47,6 +49,8 @@
 		D16D3E0425947B67003A1702 /* vmaprivate.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vmaprivate.pem; sourceTree = "<group>"; };
 		D16D3E0525947B67003A1702 /* vmapublic.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vmapublic.pem; sourceTree = "<group>"; };
 		D16D3E0925947C2E003A1702 /* RSAKeyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAKeyGenerator.swift; sourceTree = "<group>"; };
+		D1F241A525A45A9E00A10B7B /* SwCrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwCrypt.swift; sourceTree = "<group>"; };
+		D1F241A725A461FB00A10B7B /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D1F3A0312592440A000904C8 /* SecureRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureRandom.swift; sourceTree = "<group>"; };
 		D1F3A03A25938E3B000904C8 /* PublicPrivateKeypair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicPrivateKeypair.swift; sourceTree = "<group>"; };
 		D1F3A0442593A7BB000904C8 /* JOSESwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JOSESwift.framework; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		D1FDC9B625877F78005074B7 /* VMADemo */ = {
 			isa = PBXGroup;
 			children = (
+				D1F241A525A45A9E00A10B7B /* SwCrypt.swift */,
 				D16D3E0825947C16003A1702 /* RSAKeys */,
 				D16D3E0325947B42003A1702 /* certs */,
 				D16D3DD82593D187003A1702 /* CryptoExportImportManager.swift */,
@@ -140,6 +145,7 @@
 				D1FDC9C525877F7C005074B7 /* Info.plist */,
 				D1F3A0312592440A000904C8 /* SecureRandom.swift */,
 				D1F3A03A25938E3B000904C8 /* PublicPrivateKeypair.swift */,
+				D1F241A725A461FB00A10B7B /* Utilities.swift */,
 			);
 			path = VMADemo;
 			sourceTree = "<group>";
@@ -266,7 +272,9 @@
 				D1F3A0322592440B000904C8 /* SecureRandom.swift in Sources */,
 				D1FDC9BC25877F78005074B7 /* ViewController.swift in Sources */,
 				D16D3DD92593D187003A1702 /* CryptoExportImportManager.swift in Sources */,
+				D1F241A625A45A9E00A10B7B /* SwCrypt.swift in Sources */,
 				D1244E412588A250006FAFC0 /* CryptoHelper.swift in Sources */,
+				D1F241A825A461FB00A10B7B /* Utilities.swift in Sources */,
 				D16D3E0A25947C2E003A1702 /* RSAKeyGenerator.swift in Sources */,
 				D1FDC9B825877F78005074B7 /* AppDelegate.swift in Sources */,
 			);
